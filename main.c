@@ -43,7 +43,7 @@ int main()
 
     int wrong = 1;
     while(wrong == 1){
-        printf("Enter departure time in military format (0000-2359): ");
+        printf("Enter departure time in military format (0000-2359): "); 
         scanf("%d", &departure_time);
 
         printf("Enter arrival time in military format (0000-2359): ");
@@ -53,6 +53,7 @@ int main()
             printf("\nENTER TIME IN THE CORRECT FORMAT\n\n");
         else
             wrong = 0;
+        //ENSURES TIME IS IN THE CORRECT FORMAT. IF NOT LOOPS AGAIN
     }
 
     printf("Enter price of airfare: ");
@@ -65,6 +66,7 @@ int main()
         cost_milesDriven = getMileCost(total_days);
     }
 
+    //GET PRICE OF ALL FEES
     fee_parking = getParkingCost(total_days);
     fee_taxi = getTaxiCost(total_days);
     fee_reg = getConferenceCost(total_days);
@@ -80,26 +82,32 @@ int main()
         printf("Car rental price: %.2f\n", cost_carRentals);
         printf("private car price: %.2f\n", cost_milesDriven);
     }
-    
+
+    //TOTAL ALLOWANCE FOR x DAYS
     totalAllow = getTotalAllow(total_days);
     totalExpenses = fee_parking + fee_reg + fee_taxi + hotelExpenses + meal + cost_carRentals + 
         cost_milesDriven + cost_roundTrip;
 
+    //CALCULATE TOTAL SAVED IF ALLOWED > EXPENSE
     if(totalAllow > totalExpenses){
         totalSaved = totalAllow - totalExpenses;
-        printf("The total expenses for the %d day trip was: %.2f\n", total_days, totalSaved);
-    }
-    else if(totalAllow < totalExpenses){
-        reimburse = totalExpenses - totalAllow;
-        printf("The total expenses for the %d day trip was: %.2f\n", total_days, reimburse);
+        printf("The total saved for the %d day trip was: %.2f\n", total_days, totalSaved);
     }
 
+    //CALCULATE REIMBURSE OTHERWISE
+    if(totalAllow < totalExpenses)
+        reimburse = totalAllow;
+    else
+        reimburse = totalExpenses;
+
+    //PRINT VALUES
     printf("The total expenses for the %d day trip was: %.2f\n", total_days, totalExpenses);
     printf("The total allowance for a %d day trip is: %.2f\n", total_days, totalAllow);
+    printf("The reimbursement for the %d day trip is: %.2f\n", total_days, reimburse);
     return 0;
 }
 
-
+//PLACEHOLDERS FOR REAL FUNCTIONS
 int getMileCost(int total_days){return 1;}
 int getParkingCost(total_days){return 1;}
 int getTaxiCost(total_days){return 1;}
