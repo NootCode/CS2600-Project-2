@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "header.h"
 
 typedef int number;
 /*
@@ -17,6 +18,19 @@ typedef int number;
 
 
 */
+ //float getFoodCost(int days, int depTime, int arrTime){int x= depTime-arrTime; return 1;}
+
+float getTotalAllow(int days){
+    float sum = 0;
+    sum += days * 6;
+    sum += days * 10;
+    sum += days * 90;
+
+    //NEED ALLOWABLE FOOD PRICE
+
+    return sum;
+}
+
 int main()
 {  
     int tester = 1;
@@ -71,7 +85,8 @@ int main()
     fee_taxi = getTaxiCost(total_days);
     fee_reg = getConferenceCost(total_days);
     hotelExpenses = getHotelCost(total_days);
-    meal = getFoodCost(total_days, departure_time, arrival_time);
+    //meal = getFoodCost(total_days, departure_time, arrival_time);
+    meal = 0;
 
     if(tester == 1){
         printf("\n");
@@ -80,11 +95,17 @@ int main()
         printf("Arrival time: %d\n", arrival_time);
         printf("Airfare price: %.2f\n", cost_roundTrip);
         printf("Car rental price: %.2f\n", cost_carRentals);
-        printf("private car price: %.2f\n", cost_milesDriven);
+        printf("private car price: %.2f\n\n\n", cost_milesDriven);
+        printf("Parking Fees: %.2f\n", fee_parking);
+        printf("Taxi Fees: %.2f\n", fee_taxi);
+        printf("Conference Fees: %.2f\n", fee_reg);
+        printf("Hotel Fees: %.2f\n\n\n", hotelExpenses);
+
     }
 
     //TOTAL ALLOWANCE FOR x DAYS
     totalAllow = getTotalAllow(total_days);
+
     totalExpenses = fee_parking + fee_reg + fee_taxi + hotelExpenses + meal + cost_carRentals + 
         cost_milesDriven + cost_roundTrip;
 
@@ -103,25 +124,13 @@ int main()
     //PRINT VALUES
     printf("The total expenses for the %d day trip was: %.2f\n", total_days, totalExpenses);
     printf("The total allowance for a %d day trip is: %.2f\n", total_days, totalAllow);
-    printf("The reimbursement for the %d day trip is: %.2f\n", total_days, reimburse);
+    printf("The reimbursement for the %d day trip is: %.2f\n\n\n", total_days, reimburse);
     return 0;
 }
 
 //PLACEHOLDERS FOR REAL FUNCTIONS
-int getMileCost(int total_days){return 1;}
-int getParkingCost(total_days){return 1;}
-int getTaxiCost(total_days){return 1;}
-int getConferenceCost(total_days){return 1;}
-int getHotelCost(total_days){return 1;}
-int getFoodCost(total_days, departure_time, arrival_time){return 1;}
-
-int getTotalAllow(int days){
-    float sum = 0;
-    sum += days * 6;
-    sum += days * 10;
-    sum += days * 90;
-
-    //NEED ALLOWABLE FOOD PRICE
-
-    return sum;
-}
+// int getMileCost(int total_days){return 1;}
+// int getParkingCost(total_days){return 1;}
+// int getTaxiCost(total_days){return 1;}
+// int getConferenceCost(total_days){return 1;}
+// int getHotelCost(total_days){return 1;}
