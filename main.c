@@ -100,7 +100,7 @@ int main()
         printf("Hotel Fees: %.2f\n\n\n", hotelExpenses);
 
     }
-
+    
     //TOTAL ALLOWANCE FOR x DAYS
     totalAllow = getTotalAllow(total_days) + getFoodAllow(total_days, departure_time, arrival_time);
 
@@ -110,7 +110,6 @@ int main()
     //CALCULATE TOTAL SAVED IF ALLOWED > EXPENSE
     if(totalAllow > totalExpenses){
         totalSaved = totalAllow - totalExpenses;
-        printf("The total saved for the %d day trip was: %.2f\n", total_days, totalSaved);
     }
 
     //CALCULATE REIMBURSE OTHERWISE
@@ -123,5 +122,6 @@ int main()
     printf("The total expenses for the %d day trip was: %.2f\n", total_days, totalExpenses);
     printf("The total allowance for a %d day trip is: %.2f\n", total_days, totalAllow);
     printf("The reimbursement for the %d day trip is: %.2f\n\n\n", total_days, reimburse);
+    printf("The total saved for the %d day trip was: %.2f\n", total_days, totalSaved);
     return 0;
 }
