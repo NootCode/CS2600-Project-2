@@ -1,36 +1,6 @@
 #include <stdio.h>
 #include "header.h"
 
-typedef int number;
-/*
-    main -> prompt day -> 
-            time -> 
-            airfare -> 
-            rental
-    
-    file 1      ->  food;
-    file 2      ->  Miles -> 
-                    parking -> 
-                    taxi -> 
-                    conference -> 
-                    hotel
-    
-
-
-*/
- //float getFoodCost(int days, int depTime, int arrTime){int x= depTime-arrTime; return 1;}
-
-float getTotalAllow(int days){
-    float sum = 0;
-    sum += days * 6;
-    sum += days * 10;
-    sum += days * 90;
-
-    //NEED ALLOWABLE FOOD PRICE
-
-    return sum;
-}
-
 int main()
 {  
     int tester = 1;
@@ -85,8 +55,7 @@ int main()
     fee_taxi = getTaxiCost(total_days);
     fee_reg = getConferenceCost(total_days);
     hotelExpenses = getHotelCost(total_days);
-    //meal = getFoodCost(total_days, departure_time, arrival_time);
-    meal = 0;
+    meal = getFoodCost(total_days, departure_time, arrival_time);
 
     if(tester == 1){
         printf("\n");
@@ -104,7 +73,7 @@ int main()
     }
     
     //TOTAL ALLOWANCE FOR x DAYS
-    totalAllow = getTotalAllow(total_days);
+    totalAllow = getTotalAllow(total_days) + getFoodAllow(total_days, departure_time, arrival_time);
 
     totalExpenses = fee_parking + fee_reg + fee_taxi + hotelExpenses + meal + cost_carRentals + 
         cost_milesDriven + cost_roundTrip;
@@ -127,10 +96,3 @@ int main()
     printf("The total saved for the %d day trip was: %.2f\n", total_days, totalSaved);
     return 0;
 }
-
-//PLACEHOLDERS FOR REAL FUNCTIONS
-// int getMileCost(int total_days){return 1;}
-// int getParkingCost(total_days){return 1;}
-// int getTaxiCost(total_days){return 1;}
-// int getConferenceCost(total_days){return 1;}
-// int getHotelCost(total_days){return 1;}
