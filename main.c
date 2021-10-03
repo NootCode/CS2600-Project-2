@@ -1,30 +1,32 @@
 #include <stdio.h>
 #include "header.h"
 
- float getFoodAllow(int days, int depTime, int arrTime){
-    float sum = 37 * (days - 2);
-    if(depTime < 700)
-        sum += 9;
-    if(depTime < 1200)
-        sum += 12;
-    if(depTime < 1800)
-        sum += 16;
+typedef int number;
+/*
+    main -> prompt day -> 
+            time -> 
+            airfare -> 
+            rental
+    
+    file 1      ->  food;
+    file 2      ->  Miles -> 
+                    parking -> 
+                    taxi -> 
+                    conference -> 
+                    hotel
+    
 
-    if(arrTime > 800)
-        sum += 9;
-    if(arrTime > 1300)
-        sum += 12;
-    if(arrTime > 1900)
-        sum += 16;
 
-    return sum;
-}
+*/
+ //float getFoodCost(int days, int depTime, int arrTime){int x= depTime-arrTime; return 1;}
 
 float getTotalAllow(int days){
     float sum = 0;
     sum += days * 6;
     sum += days * 10;
     sum += days * 90;
+
+    //NEED ALLOWABLE FOOD PRICE
 
     return sum;
 }
@@ -79,7 +81,7 @@ int main()
     }
 
     //GET PRICE OF ALL FEES
-    fee_parking = getParkingCost(1);
+    fee_parking = getParkingCost(total_days);
     fee_taxi = getTaxiCost(total_days);
     fee_reg = getConferenceCost(total_days);
     hotelExpenses = getHotelCost(total_days);
@@ -93,7 +95,7 @@ int main()
         printf("Arrival time: %d\n", arrival_time);
         printf("Airfare price: %.2f\n", cost_roundTrip);
         printf("Car rental price: %.2f\n", cost_carRentals);
-        printf("private car price: %.2f\n", cost_milesDriven);
+        printf("private car price: %.2f\n\n\n", cost_milesDriven);
         printf("Parking Fees: %.2f\n", fee_parking);
         printf("Taxi Fees: %.2f\n", fee_taxi);
         printf("Conference Fees: %.2f\n", fee_reg);
@@ -102,7 +104,7 @@ int main()
     }
     
     //TOTAL ALLOWANCE FOR x DAYS
-    totalAllow = getTotalAllow(total_days) + getFoodAllow(total_days, departure_time, arrival_time);
+    totalAllow = getTotalAllow(total_days);
 
     totalExpenses = fee_parking + fee_reg + fee_taxi + hotelExpenses + meal + cost_carRentals + 
         cost_milesDriven + cost_roundTrip;
@@ -125,3 +127,10 @@ int main()
     printf("The total saved for the %d day trip was: %.2f\n", total_days, totalSaved);
     return 0;
 }
+
+//PLACEHOLDERS FOR REAL FUNCTIONS
+// int getMileCost(int total_days){return 1;}
+// int getParkingCost(total_days){return 1;}
+// int getTaxiCost(total_days){return 1;}
+// int getConferenceCost(total_days){return 1;}
+// int getHotelCost(total_days){return 1;}
