@@ -20,7 +20,7 @@ float getParkingCost(int days)
 float getTaxiCost(int days)
 {
     float fees;
-    printf("How much was the tax fee per day? ");
+    printf("How much was the taxi fee per day? ");
     scanf("%f", &fees);
     return days*fees;
 }

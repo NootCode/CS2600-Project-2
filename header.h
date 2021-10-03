@@ -9,10 +9,8 @@ float getConferenceCost(int days);
 float getHotelCost(int days);
 
 // functions for food
-float getFoodCost(int totalDays, int departureTime, int arrivalTime);
+float getFoodCost(int days, int depTime, int arrTime);
 float getFoodAllow(int days, int depTime, int arrTime);
 float getTotalAllow(int days);
-
-
 
 #endif

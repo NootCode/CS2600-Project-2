@@ -3,7 +3,7 @@
 
 int main()
 {  
-    int tester = 1;
+    int tester = 0;
 
     int total_days;
     int departure_time;
@@ -56,21 +56,6 @@ int main()
     fee_reg = getConferenceCost(total_days);
     hotelExpenses = getHotelCost(total_days);
     meal = getFoodCost(total_days, departure_time, arrival_time);
-
-    if(tester == 1){
-        printf("\n");
-        printf("Num days: %d\n", total_days);
-        printf("Departure time: %d\n", departure_time);
-        printf("Arrival time: %d\n", arrival_time);
-        printf("Airfare price: %.2f\n", cost_roundTrip);
-        printf("Car rental price: %.2f\n", cost_carRentals);
-        printf("private car price: %.2f\n\n\n", cost_milesDriven);
-        printf("Parking Fees: %.2f\n", fee_parking);
-        printf("Taxi Fees: %.2f\n", fee_taxi);
-        printf("Conference Fees: %.2f\n", fee_reg);
-        printf("Hotel Fees: %.2f\n\n\n", hotelExpenses);
-
-    }
     
     //TOTAL ALLOWANCE FOR x DAYS
     totalAllow = getTotalAllow(total_days) + getFoodAllow(total_days, departure_time, arrival_time);
@@ -90,9 +75,10 @@ int main()
         reimburse = totalExpenses;
 
     //PRINT VALUES
-    printf("The total expenses for the %d day trip was: %.2f\n", total_days, totalExpenses);
+    printf("\n\nThe total expenses for the %d day trip was: %.2f\n", total_days, totalExpenses);
     printf("The total allowance for a %d day trip is: %.2f\n", total_days, totalAllow);
-    printf("The reimbursement for the %d day trip is: %.2f\n\n\n", total_days, reimburse);
-    printf("The total saved for the %d day trip was: %.2f\n", total_days, totalSaved);
+    printf("The reimbursement for the %d day trip is: %.2f\n", total_days, reimburse);
+    printf("The total saved for the %d day trip was: %.2f\n\n\n", total_days, totalSaved);
+
     return 0;
 }
